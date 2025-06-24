@@ -1,62 +1,84 @@
 {
-  "id": "iperf3_server",
-  "name": "iPerf3 Server",
+  "author": "NetScout-Go",
+  "category": "Performance",
   "description": "Start an iPerf3 server on this device to enable bandwidth testing from other devices",
   "icon": "dns",
-  "category": "Performance",
+  "id": "iperf3_server",
+  "license": "MIT",
+  "name": "iPerf3 Server",
   "parameters": [
     {
+      "default": 5201,
+      "description": "Port to listen on for iPerf3 connections",
       "id": "port",
       "name": "Port",
-      "description": "Port to listen on for iPerf3 connections",
-      "type": "number",
       "required": false,
-      "default": 5201
+      "type": "number"
     },
     {
+      "default": "",
+      "description": "IP address to bind the server to (empty for all interfaces)",
       "id": "bind_address",
       "name": "Bind Address",
-      "description": "IP address to bind the server to (empty for all interfaces)",
-      "type": "string",
       "required": false,
-      "default": ""
+      "type": "string"
     },
     {
+      "default": "both",
+      "description": "Protocol to use for the server",
       "id": "protocol",
       "name": "Protocol",
-      "description": "Protocol to use for the server",
-      "type": "select",
-      "required": false,
-      "default": "both",
       "options": [
-        {"value": "both", "label": "TCP & UDP"},
-        {"value": "tcp", "label": "TCP Only"},
-        {"value": "udp", "label": "UDP Only"}
-      ]
-    },
-    {
-      "id": "duration",
-      "name": "Server Duration",
-      "description": "How long to run the server (minutes, 0 for manual stop)",
-      "type": "number",
+        {
+          "label": "TCP \u0026 UDP",
+          "value": "both"
+        },
+        {
+          "label": "TCP Only",
+          "value": "tcp"
+        },
+        {
+          "label": "UDP Only",
+          "value": "udp"
+        }
+      ],
       "required": false,
-      "default": 30,
-      "min": 0,
-      "max": 1440,
-      "step": 5
+      "type": "select"
     },
     {
+      "default": 30,
+      "description": "How long to run the server (minutes, 0 for manual stop)",
+      "id": "duration",
+      "max": 1440,
+      "min": 0,
+      "name": "Server Duration",
+      "required": false,
+      "step": 5,
+      "type": "number"
+    },
+    {
+      "default": "start",
+      "description": "Start or stop the iPerf3 server",
       "id": "action",
       "name": "Action",
-      "description": "Start or stop the iPerf3 server",
-      "type": "select",
-      "required": true,
-      "default": "start",
       "options": [
-        {"value": "start", "label": "Start Server"},
-        {"value": "stop", "label": "Stop Server"},
-        {"value": "status", "label": "Check Status"}
-      ]
+        {
+          "label": "Start Server",
+          "value": "start"
+        },
+        {
+          "label": "Stop Server",
+          "value": "stop"
+        },
+        {
+          "label": "Check Status",
+          "value": "status"
+        }
+      ],
+      "required": true,
+      "type": "select"
     }
-  ]
+  ],
+  "repository": "https://github.com/NetScout-Go/Plugin_iperf3_server",
+  "version": "1.0.0"
 }
